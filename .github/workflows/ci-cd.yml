@@ -3,7 +3,6 @@ name: CI/CD Spring Boot AWS
 on:
   push:
     branches:
-      - main
       - develop
       - staging
 
