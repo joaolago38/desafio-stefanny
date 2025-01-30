@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active: dev # Altere para test ou prod conforme o ambiente
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=stafanini
+    username: sa
+    password: root
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:sqlserver://test-db-instance.rds.amazonaws.com:1433;databaseName=stefanini
+    username: testuser
+    password: testpassword
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:sqlserver://prod-db-instance.rds.amazonaws.com:1433;databaseName=stefanini
+    username: produser
+    password: prodpassword
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
